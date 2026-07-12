@@ -56,32 +56,32 @@ EOT
       notes                         = optional(string)
       output_workspace_resource_ids = optional(set(string))
       tags                          = optional(map(string))
-      endpoint = object({
+      endpoint = list(object({
         address               = optional(string)
         coverage_level        = optional(string)
         excluded_ip_addresses = optional(set(string))
         filter = optional(object({
-          item = optional(object({
+          item = optional(list(object({
             address = optional(string)
             type    = optional(string) # Default: "AgentAddress"
-          }))
+          })))
           type = optional(string) # Default: "Include"
         }))
         included_ip_addresses = optional(set(string))
         name                  = string
         target_resource_id    = optional(string)
         target_resource_type  = optional(string)
-      })
-      test_configuration = object({
+      }))
+      test_configuration = list(object({
         http_configuration = optional(object({
           method       = optional(string) # Default: "Get"
           path         = optional(string)
           port         = optional(number)
           prefer_https = optional(bool) # Default: false
-          request_header = optional(object({
+          request_header = optional(list(object({
             name  = string
             value = string
-          }))
+          })))
           valid_status_code_ranges = optional(set(string))
         }))
         icmp_configuration = optional(object({
@@ -100,14 +100,14 @@ EOT
           trace_route_enabled       = optional(bool) # Default: true
         }))
         test_frequency_in_seconds = optional(number) # Default: 60
-      })
-      test_group = object({
+      }))
+      test_group = list(object({
         destination_endpoints    = set(string)
         enabled                  = optional(bool) # Default: true
         name                     = string
         source_endpoints         = set(string)
         test_configuration_names = set(string)
-      })
+      }))
     })))
     network_packet_captures = optional(map(object({
       name                      = string
@@ -120,13 +120,13 @@ EOT
         file_path          = optional(string)
         storage_account_id = optional(string)
       })
-      filter = optional(object({
+      filter = optional(list(object({
         local_ip_address  = optional(string)
         local_port        = optional(string)
         protocol          = string
         remote_ip_address = optional(string)
         remote_port       = optional(string)
-      }))
+      })))
     })))
     network_watcher_flow_logs = optional(map(object({
       enabled                   = bool
