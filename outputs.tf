@@ -1,4 +1,9 @@
 # --- azurerm_network_watcher ---
+output "network_watchers_id" {
+  description = "Map of id values across all network_watchers, keyed the same as var.network_watchers"
+  value       = module.network_watchers.network_watchers_id
+}
+
 output "network_watchers_location" {
   description = "Map of location values across all network_watchers, keyed the same as var.network_watchers"
   value       = module.network_watchers.network_watchers_location
@@ -20,6 +25,11 @@ output "network_watchers_tags" {
 }
 
 # --- azurerm_network_connection_monitor ---
+output "network_connection_monitors_id" {
+  description = "Map of id values across all network_connection_monitors, keyed the same as var.network_connection_monitors"
+  value       = module.network_connection_monitors.network_connection_monitors_id
+}
+
 output "network_connection_monitors_endpoint" {
   description = "Map of endpoint values across all network_connection_monitors, keyed the same as var.network_connection_monitors"
   value       = module.network_connection_monitors.network_connection_monitors_endpoint
@@ -66,6 +76,11 @@ output "network_connection_monitors_test_group" {
 }
 
 # --- azurerm_network_packet_capture ---
+output "network_packet_captures_id" {
+  description = "Map of id values across all network_packet_captures, keyed the same as var.network_packet_captures"
+  value       = module.network_packet_captures.network_packet_captures_id
+}
+
 output "network_packet_captures_filter" {
   description = "Map of filter values across all network_packet_captures, keyed the same as var.network_packet_captures"
   value       = module.network_packet_captures.network_packet_captures_filter
@@ -112,6 +127,11 @@ output "network_packet_captures_target_resource_id" {
 }
 
 # --- azurerm_network_watcher_flow_log ---
+output "network_watcher_flow_logs_id" {
+  description = "Map of id values across all network_watcher_flow_logs, keyed the same as var.network_watcher_flow_logs"
+  value       = module.network_watcher_flow_logs.network_watcher_flow_logs_id
+}
+
 output "network_watcher_flow_logs_enabled" {
   description = "Map of enabled values across all network_watcher_flow_logs, keyed the same as var.network_watcher_flow_logs"
   value       = module.network_watcher_flow_logs.network_watcher_flow_logs_enabled
