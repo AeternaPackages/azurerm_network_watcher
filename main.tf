@@ -5,7 +5,7 @@ locals {
     for k1, v1 in var.network_watchers : {
       for k2, v2 in coalesce(v1.network_connection_monitors, {}) :
       "${k1}/${k2}" => merge(v2, {
-        network_watcher_id = module.network_watchers.network_watchers["${k1}"].id
+        network_watcher_id = module.network_watchers.network_watchers_id["${k1}"]
       })
     }
   ]...)
@@ -14,7 +14,7 @@ locals {
     for k1, v1 in var.network_watchers : {
       for k2, v2 in coalesce(v1.network_packet_captures, {}) :
       "${k1}/${k2}" => merge(v2, {
-        network_watcher_name = module.network_watchers.network_watchers["${k1}"].name
+        network_watcher_name = module.network_watchers.network_watchers_name["${k1}"]
       })
     }
   ]...)
@@ -23,7 +23,7 @@ locals {
     for k1, v1 in var.network_watchers : {
       for k2, v2 in coalesce(v1.network_watcher_flow_logs, {}) :
       "${k1}/${k2}" => merge(v2, {
-        network_watcher_name = module.network_watchers.network_watchers["${k1}"].name
+        network_watcher_name = module.network_watchers.network_watchers_name["${k1}"]
       })
     }
   ]...)
