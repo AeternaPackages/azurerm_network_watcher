@@ -63,9 +63,9 @@ EOT
         filter = optional(object({
           item = optional(list(object({
             address = optional(string)
-            type    = optional(string) # Default: "AgentAddress"
+            type    = optional(string)
           })))
-          type = optional(string) # Default: "Include"
+          type = optional(string)
         }))
         included_ip_addresses = optional(set(string))
         name                  = string
@@ -74,10 +74,10 @@ EOT
       }))
       test_configuration = list(object({
         http_configuration = optional(object({
-          method       = optional(string) # Default: "Get"
+          method       = optional(string)
           path         = optional(string)
           port         = optional(number)
-          prefer_https = optional(bool) # Default: false
+          prefer_https = optional(bool)
           request_header = optional(list(object({
             name  = string
             value = string
@@ -85,7 +85,7 @@ EOT
           valid_status_code_ranges = optional(set(string))
         }))
         icmp_configuration = optional(object({
-          trace_route_enabled = optional(bool) # Default: true
+          trace_route_enabled = optional(bool)
         }))
         name                 = string
         preferred_ip_version = optional(string)
@@ -97,13 +97,13 @@ EOT
         tcp_configuration = optional(object({
           destination_port_behavior = optional(string)
           port                      = number
-          trace_route_enabled       = optional(bool) # Default: true
+          trace_route_enabled       = optional(bool)
         }))
-        test_frequency_in_seconds = optional(number) # Default: 60
+        test_frequency_in_seconds = optional(number)
       }))
       test_group = list(object({
         destination_endpoints    = set(string)
-        enabled                  = optional(bool) # Default: true
+        enabled                  = optional(bool)
         name                     = string
         source_endpoints         = set(string)
         test_configuration_names = set(string)
@@ -113,9 +113,9 @@ EOT
       name                      = string
       resource_group_name       = string
       target_resource_id        = string
-      maximum_bytes_per_packet  = optional(number) # Default: 0
-      maximum_bytes_per_session = optional(number) # Default: 1073741824
-      maximum_capture_duration  = optional(number) # Default: 18000
+      maximum_bytes_per_packet  = optional(number)
+      maximum_bytes_per_session = optional(number)
+      maximum_capture_duration  = optional(number)
       storage_location = object({
         file_path          = optional(string)
         storage_account_id = optional(string)
@@ -137,14 +137,14 @@ EOT
       network_security_group_id = optional(string)
       tags                      = optional(map(string))
       target_resource_id        = optional(string)
-      version                   = optional(number) # Default: 1
+      version                   = optional(number)
       retention_policy = object({
         days    = number
         enabled = bool
       })
       traffic_analytics = optional(object({
         enabled               = bool
-        interval_in_minutes   = optional(number) # Default: 60
+        interval_in_minutes   = optional(number)
         workspace_id          = string
         workspace_region      = string
         workspace_resource_id = string
