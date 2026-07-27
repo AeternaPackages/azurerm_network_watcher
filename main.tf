@@ -30,24 +30,24 @@ locals {
 }
 
 module "network_watchers" {
-  source           = "git::https://github.com/AeternaModules/azurerm_network_watcher.git?ref=v4.80.0"
+  source           = "git::https://github.com/AeternaModules/azurerm_network_watcher.git?ref=v4.81.0"
   network_watchers = local.network_watchers
 }
 
 module "network_connection_monitors" {
-  source                      = "git::https://github.com/AeternaModules/azurerm_network_connection_monitor.git?ref=v4.80.0"
+  source                      = "git::https://github.com/AeternaModules/azurerm_network_connection_monitor.git?ref=v4.81.0"
   network_connection_monitors = local.network_connection_monitors
   depends_on                  = [module.network_watchers]
 }
 
 module "network_packet_captures" {
-  source                  = "git::https://github.com/AeternaModules/azurerm_network_packet_capture.git?ref=v4.80.0"
+  source                  = "git::https://github.com/AeternaModules/azurerm_network_packet_capture.git?ref=v4.81.0"
   network_packet_captures = local.network_packet_captures
   depends_on              = [module.network_watchers]
 }
 
 module "network_watcher_flow_logs" {
-  source                    = "git::https://github.com/AeternaModules/azurerm_network_watcher_flow_log.git?ref=v4.80.0"
+  source                    = "git::https://github.com/AeternaModules/azurerm_network_watcher_flow_log.git?ref=v4.81.0"
   network_watcher_flow_logs = local.network_watcher_flow_logs
   depends_on                = [module.network_watchers]
 }
