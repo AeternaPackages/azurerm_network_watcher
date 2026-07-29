@@ -18,29 +18,17 @@ Nested network_connection_monitors (azurerm_network_connection_monitor):
         - notes
         - output_workspace_resource_ids
         - tags
-Nested network_packet_captures (azurerm_network_packet_capture):
-    Required:
-        - name
-        - resource_group_name
-        - target_resource_id
-        - storage_location (block)
-    Optional:
-        - maximum_bytes_per_packet
-        - maximum_bytes_per_session
-        - maximum_capture_duration
-        - filter (block)
 Nested network_watcher_flow_logs (azurerm_network_watcher_flow_log):
     Required:
         - enabled
         - name
         - resource_group_name
         - storage_account_id
+        - target_resource_id
         - retention_policy (block)
     Optional:
         - location
-        - network_security_group_id
         - tags
-        - target_resource_id
         - version
         - traffic_analytics (block)
 EOT
@@ -109,35 +97,15 @@ EOT
         test_configuration_names = set(string)
       }))
     })))
-    network_packet_captures = optional(map(object({
-      name                      = string
-      resource_group_name       = string
-      target_resource_id        = string
-      maximum_bytes_per_packet  = optional(number)
-      maximum_bytes_per_session = optional(number)
-      maximum_capture_duration  = optional(number)
-      storage_location = object({
-        file_path          = optional(string)
-        storage_account_id = optional(string)
-      })
-      filter = optional(list(object({
-        local_ip_address  = optional(string)
-        local_port        = optional(string)
-        protocol          = string
-        remote_ip_address = optional(string)
-        remote_port       = optional(string)
-      })))
-    })))
     network_watcher_flow_logs = optional(map(object({
-      enabled                   = bool
-      name                      = string
-      resource_group_name       = string
-      storage_account_id        = string
-      location                  = optional(string)
-      network_security_group_id = optional(string)
-      tags                      = optional(map(string))
-      target_resource_id        = optional(string)
-      version                   = optional(number)
+      enabled             = bool
+      name                = string
+      resource_group_name = string
+      storage_account_id  = string
+      target_resource_id  = string
+      location            = optional(string)
+      tags                = optional(map(string))
+      version             = optional(number)
       retention_policy = object({
         days    = number
         enabled = bool
@@ -156,7 +124,6 @@ EOT
     condition = alltrue(concat(
       [for kk in keys(var.network_watchers) : !strcontains(kk, "/")],
       flatten([for k0, v0 in var.network_watchers : [for kk in keys(coalesce(v0.network_connection_monitors, {})) : !strcontains(kk, "/")]]),
-      flatten([for k0, v0 in var.network_watchers : [for kk in keys(coalesce(v0.network_packet_captures, {})) : !strcontains(kk, "/")]]),
       flatten([for k0, v0 in var.network_watchers : [for kk in keys(coalesce(v0.network_watcher_flow_logs, {})) : !strcontains(kk, "/")]])
     ))
     error_message = "Map keys in this package must not contain '/': it is used internally as a nesting-key separator, so a key containing it can silently collide two different nested entries into one. Rename the offending key(s)."

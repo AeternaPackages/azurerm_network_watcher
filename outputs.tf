@@ -75,57 +75,6 @@ output "network_connection_monitors_test_group" {
   value       = module.network_connection_monitors.network_connection_monitors_test_group
 }
 
-# --- azurerm_network_packet_capture ---
-output "network_packet_captures_id" {
-  description = "Map of id values across all network_packet_captures, keyed the same as var.network_packet_captures"
-  value       = module.network_packet_captures.network_packet_captures_id
-}
-
-output "network_packet_captures_filter" {
-  description = "Map of filter values across all network_packet_captures, keyed the same as var.network_packet_captures"
-  value       = module.network_packet_captures.network_packet_captures_filter
-}
-
-output "network_packet_captures_maximum_bytes_per_packet" {
-  description = "Map of maximum_bytes_per_packet values across all network_packet_captures, keyed the same as var.network_packet_captures"
-  value       = module.network_packet_captures.network_packet_captures_maximum_bytes_per_packet
-}
-
-output "network_packet_captures_maximum_bytes_per_session" {
-  description = "Map of maximum_bytes_per_session values across all network_packet_captures, keyed the same as var.network_packet_captures"
-  value       = module.network_packet_captures.network_packet_captures_maximum_bytes_per_session
-}
-
-output "network_packet_captures_maximum_capture_duration" {
-  description = "Map of maximum_capture_duration values across all network_packet_captures, keyed the same as var.network_packet_captures"
-  value       = module.network_packet_captures.network_packet_captures_maximum_capture_duration
-}
-
-output "network_packet_captures_name" {
-  description = "Map of name values across all network_packet_captures, keyed the same as var.network_packet_captures"
-  value       = module.network_packet_captures.network_packet_captures_name
-}
-
-output "network_packet_captures_network_watcher_name" {
-  description = "Map of network_watcher_name values across all network_packet_captures, keyed the same as var.network_packet_captures"
-  value       = module.network_packet_captures.network_packet_captures_network_watcher_name
-}
-
-output "network_packet_captures_resource_group_name" {
-  description = "Map of resource_group_name values across all network_packet_captures, keyed the same as var.network_packet_captures"
-  value       = module.network_packet_captures.network_packet_captures_resource_group_name
-}
-
-output "network_packet_captures_storage_location" {
-  description = "Map of storage_location values across all network_packet_captures, keyed the same as var.network_packet_captures"
-  value       = module.network_packet_captures.network_packet_captures_storage_location
-}
-
-output "network_packet_captures_target_resource_id" {
-  description = "Map of target_resource_id values across all network_packet_captures, keyed the same as var.network_packet_captures"
-  value       = module.network_packet_captures.network_packet_captures_target_resource_id
-}
-
 # --- azurerm_network_watcher_flow_log ---
 output "network_watcher_flow_logs_id" {
   description = "Map of id values across all network_watcher_flow_logs, keyed the same as var.network_watcher_flow_logs"
@@ -145,11 +94,6 @@ output "network_watcher_flow_logs_location" {
 output "network_watcher_flow_logs_name" {
   description = "Map of name values across all network_watcher_flow_logs, keyed the same as var.network_watcher_flow_logs"
   value       = module.network_watcher_flow_logs.network_watcher_flow_logs_name
-}
-
-output "network_watcher_flow_logs_network_security_group_id" {
-  description = "Map of network_security_group_id values across all network_watcher_flow_logs, keyed the same as var.network_watcher_flow_logs"
-  value       = module.network_watcher_flow_logs.network_watcher_flow_logs_network_security_group_id
 }
 
 output "network_watcher_flow_logs_network_watcher_name" {
